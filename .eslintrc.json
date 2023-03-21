@@ -37,6 +37,9 @@
             "error",
             "never"
         ],
+        "no-restricted-imports": [
+            "error", { "patterns": ["@/features/*/*"] }
+        ],
         "react/react-in-jsx-scope": "off",
         "tailwindcss/no-custom-classname": "off"
     }
