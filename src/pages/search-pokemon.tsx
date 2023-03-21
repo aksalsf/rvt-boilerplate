@@ -1,40 +1,32 @@
 import {
   Button,
-  Box,
-  Paper,
-  TextField,
   Stack
 } from "@mui/material"
 
+import { TextField } from "@/components/form"
+import { useSearchPokemon } from "@/features/pokemon"
+
 function SearchPokemon() {
+  const { form, methods } = useSearchPokemon()
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-    >
-      <Paper
-        elevation={0}
-        sx={{
-          padding: 4,
-        }}
-      >
-        <Stack spacing={4}>
-          <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="logo" />
-          <Stack spacing={2}>
-            <TextField
-              id="outlined-basic"
-              variant="standard"
-              placeholder="Type your favorite pokemon"
-            />
-            <Button variant="contained">
-              Search
-            </Button>
-          </Stack>
+    <Stack spacing={4}>
+      <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="logo" />
+      <form onSubmit={form.handleSubmit(methods.onSubmit)}>
+        <Stack spacing={2}>
+          <TextField
+            name="pokemon"
+            control={form.control}
+            size="small"
+          />
+          <Button
+            type="submit"
+            variant="contained"
+          >
+            Search
+          </Button>
         </Stack>
-      </Paper>
-    </Box>
+      </form>
+    </Stack>
   )
 }
 

@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { GlobalStyles } from "@mui/material"
+import { Box, GlobalStyles, Paper } from "@mui/material"
 import { Outlet } from "react-router-dom"
 
 function BaseLayout(): JSX.Element {
@@ -15,9 +15,23 @@ function BaseLayout(): JSX.Element {
           },
         }}
       />
-      <React.Suspense>
-        <Outlet />
-      </React.Suspense>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+      >
+        <Paper
+          elevation={0}
+          sx={{
+            padding: 4,
+          }}
+        >
+          <React.Suspense>
+            <Outlet />
+          </React.Suspense>
+        </Paper>
+      </Box>
     </React.Fragment>
   )
 }
