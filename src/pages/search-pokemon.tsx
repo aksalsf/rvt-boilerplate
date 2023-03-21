@@ -24,6 +24,9 @@ function SearchPokemon() {
           >
             Search
           </Button>
+          <p className="text-red-500">
+            {form.errors.pokemon?.message}
+          </p>
         </Stack>
       </form>
     </Stack>

@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom"
 import BaseLayout from "@/layouts/base-layout"
 
 const SearchPokemon = lazy(() => import("@/pages/search-pokemon"))
+const PokemonCard = lazy(() => import("@/pages/pokemon-card"))
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <SearchPokemon />,
       },
+      {
+        path: "/result",
+        element: <PokemonCard />
+      }
     ]
   }
 ])

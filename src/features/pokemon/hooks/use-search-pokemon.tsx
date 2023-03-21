@@ -1,16 +1,16 @@
 import { SubmitHandler, useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
 
-interface ISearchFormInput {
-  pokemon: string
-}
+import { searchPokemonFormSchema, SearchPokemonForm } from "@/features/pokemon"
 
 function useSearchPokemon () {
-  const { control, handleSubmit } = useForm<ISearchFormInput>({
+  const { control, handleSubmit, formState:{ errors } } = useForm<SearchPokemonForm>({
     defaultValues: {
       pokemon: "",
-    }
+    },
+    resolver: yupResolver(searchPokemonFormSchema)
   })
-  const onSubmit: SubmitHandler<ISearchFormInput> = data => console.log(data)
+  const onSubmit: SubmitHandler<SearchPokemonForm> = data => console.log(data)
 
   return {
     methods: {
@@ -18,6 +18,7 @@ function useSearchPokemon () {
     },
     form: {
       control,
+      errors,
       handleSubmit,
     }
   }
