@@ -5,7 +5,7 @@ import type { Pokemon } from "@/features/pokemon"
 
 export const api = createApi({
   // The base URL used for all requests
-  baseQuery: fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "/api/" }),
   // The endpoints are generated for the 'pokemon' resource
   endpoints: (builder) => ({
     getPokemon: builder.query<Pokemon, string>({
