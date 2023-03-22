@@ -6,7 +6,10 @@ import {
   Stack,
   Typography
 } from "@mui/material"
-import { redirect, useNavigate, useParams } from "react-router-dom"
+import {
+  useNavigate,
+  useParams
+} from "react-router-dom"
 
 import type { Pokemon } from "@/features/pokemon"
 import { useGetPokemonQuery } from "@/store/api"
@@ -36,8 +39,7 @@ function SearchPokemonResult ({
 }
 
 function PokemonCard () {
-  const { pokemon } = useParams<{ pokemon: string }>()
-  if (!pokemon) return redirect("/")
+  const pokemonName = useParams<{ pokemon: string }>().pokemon ?? ""
 
   const navigate = useNavigate()
   function handleClickBack() {
@@ -49,7 +51,7 @@ function PokemonCard () {
     isLoading,
     isSuccess,
     isError
-  } = useGetPokemonQuery(pokemon)
+  } = useGetPokemonQuery(pokemonName)
 
   return (
     <Stack

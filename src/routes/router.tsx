@@ -20,6 +20,10 @@ const router = createBrowserRouter([
         element: <PokemonCard />
       }
     ]
+  },
+  {
+    path: "*",
+    element: <h1>404</h1>
   }
 ])
 
