@@ -1,16 +1,26 @@
-import { SubmitHandler, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { searchPokemonFormSchema, SearchPokemonForm } from "@/features/pokemon"
 
 function useSearchPokemon () {
-  const { control, handleSubmit, formState:{ errors } } = useForm<SearchPokemonForm>({
+  const {
+    control,
+    handleSubmit,
+    formState:{ errors }
+  } = useForm<SearchPokemonForm>({
     defaultValues: {
       pokemon: "",
     },
     resolver: yupResolver(searchPokemonFormSchema)
   })
-  const onSubmit: SubmitHandler<SearchPokemonForm> = data => console.log(data)
+
+  const navigate = useNavigate()
+
+  function onSubmit (querySearch: SearchPokemonForm) {
+    navigate(`/pokemon/${querySearch.pokemon}`)
+  }
 
   return {
     methods: {

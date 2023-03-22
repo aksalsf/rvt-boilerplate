@@ -1,9 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 
+import { Provider } from "react-redux"
 import { RouterProvider } from "react-router-dom"
 import { ThemeProvider } from "@mui/material/styles"
 
+import store from "@/store/config"
 import { router } from "@/routes"
 import MUI_THEME from "@/styles/mui-theme"
 
@@ -15,8 +17,10 @@ import "@/assets/css/main.css"
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={MUI_THEME}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={MUI_THEME}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
 )
